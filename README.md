@@ -1,1 +1,1 @@
-# alimenta-o-inteligente-app
+# alimentacao-inteligente-app
