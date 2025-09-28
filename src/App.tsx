@@ -1,24 +1,100 @@
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { AuthProvider, useAuth } from '@/contexts/AuthContext';
+import Layout from '@/components/Layout';
+import AuthPage from '@/pages/AuthPage';
+import DashboardPage from '@/pages/DashboardPage';
+import { Toaster } from '@/components/ui/toaster';
+
+const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const { user, loading } = useAuth();
+  
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+      </div>
+    );
+  }
+  
+  return user ? <>{children}</> : <Navigate to="/" replace />;
+};
 
 function App() {
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      <header className="border-b">
-        <div className="container mx-auto px-4 py-6">
-          <h1 className="text-2xl font-bold text-primary">Alimentação Inteligente</h1>
-          <p className="text-muted-foreground">Nutrição & Treino</p>
-        </div>
-      </header>
-      
-      <main className="container mx-auto px-4 py-8">
-        <div className="text-center">
-          <h2 className="text-3xl font-bold mb-4">Bem-vindo!</h2>
-          <p className="text-lg text-muted-foreground">
-            App inteligente para análise nutricional, treinos personalizados e acompanhamento de progresso
-          </p>
-        </div>
-      </main>
-    </div>
+    <AuthProvider>
+      <Router>
+        <Layout>
+          <Routes>
+            <Route path="/" element={<AuthPage />} />
+            <Route 
+              path="/dashboard" 
+              element={
+                <ProtectedRoute>
+                  <DashboardPage />
+                </ProtectedRoute>
+              } 
+            />
+            <Route 
+              path="/profile" 
+              element={
+                <ProtectedRoute>
+                  <div className="p-4 text-center">
+                    <h1 className="text-2xl font-bold">Perfil</h1>
+                    <p className="text-gray-600 mt-2">Em desenvolvimento...</p>
+                  </div>
+                </ProtectedRoute>
+              } 
+            />
+            <Route 
+              path="/meal" 
+              element={
+                <ProtectedRoute>
+                  <div className="p-4 text-center">
+                    <h1 className="text-2xl font-bold">Análise de Refeições</h1>
+                    <p className="text-gray-600 mt-2">Em desenvolvimento...</p>
+                  </div>
+                </ProtectedRoute>
+              } 
+            />
+            <Route 
+              path="/workouts" 
+              element={
+                <ProtectedRoute>
+                  <div className="p-4 text-center">
+                    <h1 className="text-2xl font-bold">Treinos</h1>
+                    <p className="text-gray-600 mt-2">Em desenvolvimento...</p>
+                  </div>
+                </ProtectedRoute>
+              } 
+            />
+            <Route 
+              path="/stats" 
+              element={
+                <ProtectedRoute>
+                  <div className="p-4 text-center">
+                    <h1 className="text-2xl font-bold">Estatísticas</h1>
+                    <p className="text-gray-600 mt-2">Em desenvolvimento...</p>
+                  </div>
+                </ProtectedRoute>
+              } 
+            />
+            <Route 
+              path="/subscription" 
+              element={
+                <ProtectedRoute>
+                  <div className="p-4 text-center">
+                    <h1 className="text-2xl font-bold">Assinatura</h1>
+                    <p className="text-gray-600 mt-2">Em desenvolvimento...</p>
+                  </div>
+                </ProtectedRoute>
+              } 
+            />
+          </Routes>
+        </Layout>
+        <Toaster />
+      </Router>
+    </AuthProvider>
   );
 }
 

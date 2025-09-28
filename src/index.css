@@ -10,20 +10,32 @@
     --card-foreground: 240 10% 3.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 240 10% 3.9%;
-    --primary: 142 76% 36%;
-    --primary-foreground: 355 7% 97%;
+    --primary: 142 86% 28%;
+    --primary-foreground: 355 100% 97%;
     --secondary: 240 4.8% 95.9%;
     --secondary-foreground: 240 5.9% 10%;
     --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
+    --muted-foreground: 240 3.8% 45%;
     --accent: 240 4.8% 95.9%;
     --accent-foreground: 240 5.9% 10%;
-    --destructive: 0 84.2% 60.2%;
+    --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 98%;
     --border: 240 5.9% 90%;
     --input: 240 5.9% 90%;
-    --ring: 142 76% 36%;
+    --ring: 142 86% 28%;
+    --chart-1: 142 86% 28%;
+    --chart-2: 173 80% 40%;
+    --chart-3: 197 100% 31%;
+    --chart-4: 43 96% 56%;
+    --chart-5: 27 87% 67%;
     --radius: 0.5rem;
+    
+    /* Custom nutrition app colors */
+    --nutrition-green: 142 86% 28%;
+    --nutrition-light-green: 142 60% 90%;
+    --nutrition-blue: 197 100% 31%;
+    --nutrition-orange: 27 87% 67%;
+    --nutrition-purple: 267 84% 56%;
   }
 
   .dark {
@@ -33,8 +45,8 @@
     --card-foreground: 0 0% 98%;
     --popover: 240 10% 3.9%;
     --popover-foreground: 0 0% 98%;
-    --primary: 142 70% 45%;
-    --primary-foreground: 144 61% 20%;
+    --primary: 142 86% 28%;
+    --primary-foreground: 355 100% 97%;
     --secondary: 240 3.7% 15.9%;
     --secondary-foreground: 0 0% 98%;
     --muted: 240 3.7% 15.9%;
@@ -45,7 +57,12 @@
     --destructive-foreground: 0 0% 98%;
     --border: 240 3.7% 15.9%;
     --input: 240 3.7% 15.9%;
-    --ring: 142 70% 45%;
+    --ring: 142 86% 28%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
   }
 }
 
@@ -55,5 +72,12 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
   }
 }
