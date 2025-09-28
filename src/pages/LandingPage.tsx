@@ -1,38 +1,35 @@
 import React from 'react';
-import { Button } from '@/components/ui/button';
-import { Card } from '@/components/ui/card';
 import { useNavigate } from 'react-router-dom';
 
 const LandingPage = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <header className="flex items-center justify-between p-4 border-b border-border">
+      <header className="flex items-center justify-between p-4 bg-white border-b border-gray-200">
         <div className="flex items-center gap-3">
-          <div className="w-12 h-12 bg-primary rounded-xl flex items-center justify-center">
-            <span className="text-primary-foreground font-bold text-lg">AI</span>
+          <div className="w-12 h-12 bg-green-600 rounded-xl flex items-center justify-center">
+            <span className="text-white font-bold text-lg">AI</span>
           </div>
-          <h1 className="text-xl font-semibold text-foreground">Alimentação Inteligente</h1>
+          <h1 className="text-xl font-semibold text-gray-900">Alimentação Inteligente</h1>
         </div>
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-2">
-            <span className="text-sm text-muted-foreground">🌐 PT 🇵🇹</span>
+            <span className="text-sm text-gray-600">🌐 PT 🇵🇹</span>
           </div>
-          <Button 
-            variant="outline" 
+          <button 
             onClick={() => navigate('/auth')}
-            className="text-foreground border-border hover:bg-muted"
+            className="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors"
           >
             Entrar
-          </Button>
+          </button>
         </div>
       </header>
 
       {/* Hero Section */}
       <main className="flex flex-col items-center text-center px-4 py-16 max-w-4xl mx-auto">
-        <h2 className="text-5xl font-bold text-primary mb-6 leading-tight">
+        <h2 className="text-5xl font-bold text-green-600 mb-6 leading-tight">
           Your smart companion
           <br />
           for nutrition, fitness and
@@ -40,7 +37,7 @@ const LandingPage = () => {
           daily health
         </h2>
         
-        <p className="text-lg text-muted-foreground mb-12 max-w-2xl">
+        <p className="text-lg text-gray-600 mb-12 max-w-2xl">
           AI recipes, calorie recognition, fitness tracking and more —
           <br />
           all in one app.
@@ -48,31 +45,26 @@ const LandingPage = () => {
 
         {/* CTA Buttons */}
         <div className="flex flex-col gap-4 w-full max-w-md">
-          <Button 
-            size="lg" 
-            className="bg-primary hover:bg-primary/90 text-primary-foreground h-14 text-lg font-medium rounded-xl"
+          <button 
             onClick={() => navigate('/auth')}
+            className="bg-green-600 hover:bg-green-700 text-white h-14 text-lg font-medium rounded-xl transition-colors"
           >
             Comece Grátis Agora →
-          </Button>
+          </button>
           
-          <Button 
-            variant="outline" 
-            size="lg"
-            className="h-14 text-lg border-border text-foreground hover:bg-muted rounded-xl"
-          >
+          <button className="border border-gray-300 text-gray-700 hover:bg-gray-50 h-14 text-lg rounded-xl transition-colors">
             Ver Planos Premium
-          </Button>
+          </button>
         </div>
       </main>
 
       {/* Features Section */}
-      <section className="px-4 py-16 bg-muted/30">
+      <section className="px-4 py-16 bg-gray-100">
         <div className="max-w-4xl mx-auto text-center">
-          <h3 className="text-3xl font-bold text-primary mb-6">
+          <h3 className="text-3xl font-bold text-green-600 mb-6">
             Funcionalidades Principais
           </h3>
-          <p className="text-lg text-muted-foreground mb-12">
+          <p className="text-lg text-gray-600 mb-12">
             Combinamos inteligência artificial com nutrição científica
             <br />
             para criar a experiência alimentar perfeita para si.
@@ -80,43 +72,43 @@ const LandingPage = () => {
           
           {/* Feature Cards */}
           <div className="grid md:grid-cols-3 gap-6">
-            <Card className="p-6 bg-card border-border">
-              <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
+            <div className="p-6 bg-white rounded-xl border border-gray-200 shadow-sm">
+              <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl">🍎</span>
               </div>
-              <h4 className="text-xl font-semibold mb-3 text-card-foreground">Análise Nutricional</h4>
-              <p className="text-muted-foreground">
+              <h4 className="text-xl font-semibold mb-3 text-gray-900">Análise Nutricional</h4>
+              <p className="text-gray-600">
                 Reconhecimento automático de alimentos e análise detalhada de calorias e nutrientes
               </p>
-            </Card>
+            </div>
 
-            <Card className="p-6 bg-card border-border">
-              <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
+            <div className="p-6 bg-white rounded-xl border border-gray-200 shadow-sm">
+              <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl">💪</span>
               </div>
-              <h4 className="text-xl font-semibold mb-3 text-card-foreground">Treinos Personalizados</h4>
-              <p className="text-muted-foreground">
+              <h4 className="text-xl font-semibold mb-3 text-gray-900">Treinos Personalizados</h4>
+              <p className="text-gray-600">
                 Planos de exercício adaptados aos seus objetivos e nível de fitness
               </p>
-            </Card>
+            </div>
 
-            <Card className="p-6 bg-card border-border">
-              <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
+            <div className="p-6 bg-white rounded-xl border border-gray-200 shadow-sm">
+              <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl">📊</span>
               </div>
-              <h4 className="text-xl font-semibold mb-3 text-card-foreground">Acompanhamento</h4>
-              <p className="text-muted-foreground">
+              <h4 className="text-xl font-semibold mb-3 text-gray-900">Acompanhamento</h4>
+              <p className="text-gray-600">
                 Monitorização em tempo real do seu progresso e objetivos de saúde
               </p>
-            </Card>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="py-8 px-4 border-t border-border">
+      <footer className="py-8 px-4 bg-white border-t border-gray-200">
         <div className="max-w-4xl mx-auto text-center">
-          <p className="text-muted-foreground">
+          <p className="text-gray-600">
             © 2024 Alimentação Inteligente. Todos os direitos reservados.
           </p>
         </div>
