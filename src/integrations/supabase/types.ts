@@ -14,468 +14,719 @@ export type Database = {
   }
   public: {
     Tables: {
-      events_log: {
+      análise_receita_diária: {
         Row: {
-          event_type: string | null
-          id: string
-          occurred_at: string | null
-          payload: Json | null
-          source: string | null
-          user_id: string | null
+          brl_amount: number
+          day: string
+          eur_amount: number
+          orders_count: number
         }
         Insert: {
-          event_type?: string | null
-          id?: string
-          occurred_at?: string | null
-          payload?: Json | null
-          source?: string | null
-          user_id?: string | null
+          brl_amount?: number
+          day: string
+          eur_amount?: number
+          orders_count?: number
         }
         Update: {
-          event_type?: string | null
-          id?: string
-          occurred_at?: string | null
-          payload?: Json | null
-          source?: string | null
-          user_id?: string | null
-        }
-        Relationships: [
-          {
-            foreignKeyName: "events_log_user_id_fkey"
-            columns: ["user_id"]
-            isOneToOne: false
-            referencedRelation: "users"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
-      meal_images: {
-        Row: {
-          calories_estimated: number | null
-          created_at: string | null
-          id: string
-          image_url: string | null
-          ingredients: Json | null
-          nutrients: Json | null
-          user_id: string | null
-        }
-        Insert: {
-          calories_estimated?: number | null
-          created_at?: string | null
-          id?: string
-          image_url?: string | null
-          ingredients?: Json | null
-          nutrients?: Json | null
-          user_id?: string | null
-        }
-        Update: {
-          calories_estimated?: number | null
-          created_at?: string | null
-          id?: string
-          image_url?: string | null
-          ingredients?: Json | null
-          nutrients?: Json | null
-          user_id?: string | null
-        }
-        Relationships: [
-          {
-            foreignKeyName: "meal_images_user_id_fkey"
-            columns: ["user_id"]
-            isOneToOne: false
-            referencedRelation: "users"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
-      notifications_queue: {
-        Row: {
-          created_at: string | null
-          id: string
-          payload: Json | null
-          scheduled_at: string | null
-          status: string | null
-          tries: number | null
-          type: string | null
-          user_id: string | null
-        }
-        Insert: {
-          created_at?: string | null
-          id?: string
-          payload?: Json | null
-          scheduled_at?: string | null
-          status?: string | null
-          tries?: number | null
-          type?: string | null
-          user_id?: string | null
-        }
-        Update: {
-          created_at?: string | null
-          id?: string
-          payload?: Json | null
-          scheduled_at?: string | null
-          status?: string | null
-          tries?: number | null
-          type?: string | null
-          user_id?: string | null
-        }
-        Relationships: [
-          {
-            foreignKeyName: "notifications_queue_user_id_fkey"
-            columns: ["user_id"]
-            isOneToOne: false
-            referencedRelation: "users"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
-      progress_monthly: {
-        Row: {
-          created_at: string | null
-          id: string
-          month: number | null
-          total_calories: number | null
-          user_id: string | null
-          workouts_count: number | null
-          year: number | null
-        }
-        Insert: {
-          created_at?: string | null
-          id?: string
-          month?: number | null
-          total_calories?: number | null
-          user_id?: string | null
-          workouts_count?: number | null
-          year?: number | null
-        }
-        Update: {
-          created_at?: string | null
-          id?: string
-          month?: number | null
-          total_calories?: number | null
-          user_id?: string | null
-          workouts_count?: number | null
-          year?: number | null
-        }
-        Relationships: [
-          {
-            foreignKeyName: "progress_monthly_user_id_fkey"
-            columns: ["user_id"]
-            isOneToOne: false
-            referencedRelation: "users"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
-      subscriptions: {
-        Row: {
-          created_at: string | null
-          id: string
-          plan_name: string | null
-          price_eur: number | null
-          status: string | null
-          user_id: string | null
-        }
-        Insert: {
-          created_at?: string | null
-          id?: string
-          plan_name?: string | null
-          price_eur?: number | null
-          status?: string | null
-          user_id?: string | null
-        }
-        Update: {
-          created_at?: string | null
-          id?: string
-          plan_name?: string | null
-          price_eur?: number | null
-          status?: string | null
-          user_id?: string | null
-        }
-        Relationships: [
-          {
-            foreignKeyName: "subscriptions_user_id_fkey"
-            columns: ["user_id"]
-            isOneToOne: false
-            referencedRelation: "users"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
-      usage_limits: {
-        Row: {
-          created_at: string | null
-          date: string | null
-          id: string
-          meal_count: number | null
-          msg_count: number | null
-          user_id: string | null
-        }
-        Insert: {
-          created_at?: string | null
-          date?: string | null
-          id?: string
-          meal_count?: number | null
-          msg_count?: number | null
-          user_id?: string | null
-        }
-        Update: {
-          created_at?: string | null
-          date?: string | null
-          id?: string
-          meal_count?: number | null
-          msg_count?: number | null
-          user_id?: string | null
-        }
-        Relationships: [
-          {
-            foreignKeyName: "usage_limits_user_id_fkey"
-            columns: ["user_id"]
-            isOneToOne: false
-            referencedRelation: "users"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
-      users: {
-        Row: {
-          altura_cm: number | null
-          created_at: string | null
-          email: string | null
-          id: string
-          nome: string | null
-          objetivo: string | null
-          peso_kg: number | null
-          plano_atual: string | null
-          sexo: string | null
-          subscription_status: string | null
-          trial_end_at: string | null
-        }
-        Insert: {
-          altura_cm?: number | null
-          created_at?: string | null
-          email?: string | null
-          id?: string
-          nome?: string | null
-          objetivo?: string | null
-          peso_kg?: number | null
-          plano_atual?: string | null
-          sexo?: string | null
-          subscription_status?: string | null
-          trial_end_at?: string | null
-        }
-        Update: {
-          altura_cm?: number | null
-          created_at?: string | null
-          email?: string | null
-          id?: string
-          nome?: string | null
-          objetivo?: string | null
-          peso_kg?: number | null
-          plano_atual?: string | null
-          sexo?: string | null
-          subscription_status?: string | null
-          trial_end_at?: string | null
+          brl_amount?: number
+          day?: string
+          eur_amount?: number
+          orders_count?: number
         }
         Relationships: []
       }
-      workout_exercises: {
+      assinaturas: {
         Row: {
-          created_at: string | null
-          exercise_name: string | null
-          id: string
-          reps: number | null
-          sets: number | null
-          time_seconds: number | null
-          user_id: string | null
-          workout_id: string | null
+          cancelled_at: string | null
+          created_at: string
+          ends_at: string | null
+          id: number
+          plan: Database["public"]["Enums"]["plan_type"]
+          source: string | null
+          starts_at: string
+          status: Database["public"]["Enums"]["subscription_status"]
+          updated_at: string
+          user_id: string
         }
         Insert: {
-          created_at?: string | null
-          exercise_name?: string | null
-          id?: string
-          reps?: number | null
-          sets?: number | null
-          time_seconds?: number | null
-          user_id?: string | null
-          workout_id?: string | null
+          cancelled_at?: string | null
+          created_at?: string
+          ends_at?: string | null
+          id?: number
+          plan: Database["public"]["Enums"]["plan_type"]
+          source?: string | null
+          starts_at?: string
+          status?: Database["public"]["Enums"]["subscription_status"]
+          updated_at?: string
+          user_id: string
         }
         Update: {
-          created_at?: string | null
-          exercise_name?: string | null
-          id?: string
-          reps?: number | null
+          cancelled_at?: string | null
+          created_at?: string
+          ends_at?: string | null
+          id?: number
+          plan?: Database["public"]["Enums"]["plan_type"]
+          source?: string | null
+          starts_at?: string
+          status?: Database["public"]["Enums"]["subscription_status"]
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      exercícios: {
+        Row: {
+          id: number
+          name: string
+          reps: string | null
+          rest_sec: number | null
+          sets: number | null
+          treino_id: number
+          weight_kg: number | null
+        }
+        Insert: {
+          id?: number
+          name: string
+          reps?: string | null
+          rest_sec?: number | null
           sets?: number | null
-          time_seconds?: number | null
-          user_id?: string | null
-          workout_id?: string | null
+          treino_id: number
+          weight_kg?: number | null
+        }
+        Update: {
+          id?: number
+          name?: string
+          reps?: string | null
+          rest_sec?: number | null
+          sets?: number | null
+          treino_id?: number
+          weight_kg?: number | null
         }
         Relationships: [
           {
-            foreignKeyName: "workout_exercises_user_id_fkey"
-            columns: ["user_id"]
+            foreignKeyName: "exercícios_treino_id_fkey"
+            columns: ["treino_id"]
             isOneToOne: false
-            referencedRelation: "users"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "workout_exercises_workout_id_fkey"
-            columns: ["workout_id"]
-            isOneToOne: false
-            referencedRelation: "workouts"
+            referencedRelation: "treinos"
             referencedColumns: ["id"]
           },
         ]
       }
-      workouts: {
+      histórico_do_bate_papo: {
         Row: {
-          created_at: string | null
-          id: string
-          title: string | null
-          user_id: string | null
-          week_day: number | null
+          created_at: string
+          id: number
+          message: string
+          response: string | null
+          user_id: string
         }
         Insert: {
-          created_at?: string | null
-          id?: string
-          title?: string | null
-          user_id?: string | null
-          week_day?: number | null
+          created_at?: string
+          id?: number
+          message: string
+          response?: string | null
+          user_id: string
         }
         Update: {
-          created_at?: string | null
-          id?: string
-          title?: string | null
+          created_at?: string
+          id?: number
+          message?: string
+          response?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
+      imagens: {
+        Row: {
+          created_at: string
+          id: number
+          prompt: string | null
+          url: string | null
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: number
+          prompt?: string | null
+          url?: string | null
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: number
+          prompt?: string | null
+          url?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
+      logs_da_webhook: {
+        Row: {
+          event: string
+          id: number
+          payload: Json | null
+          received_at: string
+          source: string
+        }
+        Insert: {
+          event: string
+          id?: number
+          payload?: Json | null
+          received_at?: string
+          source: string
+        }
+        Update: {
+          event?: string
+          id?: number
+          payload?: Json | null
+          received_at?: string
+          source?: string
+        }
+        Relationships: []
+      }
+      notificações: {
+        Row: {
+          body: string
+          created_at: string
+          id: number
+          read: boolean
+          title: string
+          user_id: string
+        }
+        Insert: {
+          body: string
+          created_at?: string
+          id?: number
+          read?: boolean
+          title: string
+          user_id: string
+        }
+        Update: {
+          body?: string
+          created_at?: string
+          id?: number
+          read?: boolean
+          title?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      pagamentos: {
+        Row: {
+          amount: number
+          created_at: string
+          currency: string
+          id: number
+          order_id: string | null
+          payload: Json | null
+          period_days: number
+          plan: Database["public"]["Enums"]["plan_type"]
+          platform: string
+          received_at: string
+          state: string
+          user_id: string
+        }
+        Insert: {
+          amount: number
+          created_at?: string
+          currency?: string
+          id?: number
+          order_id?: string | null
+          payload?: Json | null
+          period_days?: number
+          plan?: Database["public"]["Enums"]["plan_type"]
+          platform?: string
+          received_at?: string
+          state?: string
+          user_id: string
+        }
+        Update: {
+          amount?: number
+          created_at?: string
+          currency?: string
+          id?: number
+          order_id?: string | null
+          payload?: Json | null
+          period_days?: number
+          plan?: Database["public"]["Enums"]["plan_type"]
+          platform?: string
+          received_at?: string
+          state?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      perfis: {
+        Row: {
+          created_at: string
+          email: string | null
+          locale: string | null
+          name: string | null
+          shopify_customer_id: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          email?: string | null
+          locale?: string | null
+          name?: string | null
+          shopify_customer_id?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          email?: string | null
+          locale?: string | null
+          name?: string | null
+          shopify_customer_id?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      planos: {
+        Row: {
+          code: Database["public"]["Enums"]["plan_type"]
+          created_at: string
+          default_cycle_days: number
+          description: string | null
+          id: number
+          max_chats_per_day: number
+          max_images_per_day: number
+          max_recipes_per_day: number
+          name: string
+          price_brl: number
+          price_eur: number
+        }
+        Insert: {
+          code: Database["public"]["Enums"]["plan_type"]
+          created_at?: string
+          default_cycle_days?: number
+          description?: string | null
+          id?: number
+          max_chats_per_day?: number
+          max_images_per_day?: number
+          max_recipes_per_day?: number
+          name: string
+          price_brl?: number
+          price_eur?: number
+        }
+        Update: {
+          code?: Database["public"]["Enums"]["plan_type"]
+          created_at?: string
+          default_cycle_days?: number
+          description?: string | null
+          id?: number
+          max_chats_per_day?: number
+          max_images_per_day?: number
+          max_recipes_per_day?: number
+          name?: string
+          price_brl?: number
+          price_eur?: number
+        }
+        Relationships: []
+      }
+      receitas: {
+        Row: {
+          body: string
+          created_at: string
+          id: number
+          title: string
+          user_id: string | null
+        }
+        Insert: {
+          body: string
+          created_at?: string
+          id?: number
+          title: string
           user_id?: string | null
-          week_day?: number | null
+        }
+        Update: {
+          body?: string
+          created_at?: string
+          id?: number
+          title?: string
+          user_id?: string | null
+        }
+        Relationships: []
+      }
+      registros_de_saúde: {
+        Row: {
+          calories: number | null
+          heart_rate_avg: number | null
+          id: number
+          logged_at: string
+          steps: number | null
+          user_id: string
+          weight_kg: number | null
+        }
+        Insert: {
+          calories?: number | null
+          heart_rate_avg?: number | null
+          id?: number
+          logged_at?: string
+          steps?: number | null
+          user_id: string
+          weight_kg?: number | null
+        }
+        Update: {
+          calories?: number | null
+          heart_rate_avg?: number | null
+          id?: number
+          logged_at?: string
+          steps?: number | null
+          user_id?: string
+          weight_kg?: number | null
+        }
+        Relationships: []
+      }
+      registros_de_treino: {
+        Row: {
+          id: number
+          notes: string | null
+          performed_at: string
+          treino_id: number | null
+          user_id: string
+        }
+        Insert: {
+          id?: number
+          notes?: string | null
+          performed_at?: string
+          treino_id?: number | null
+          user_id: string
+        }
+        Update: {
+          id?: number
+          notes?: string | null
+          performed_at?: string
+          treino_id?: number | null
+          user_id?: string
         }
         Relationships: [
           {
-            foreignKeyName: "workouts_user_id_fkey"
-            columns: ["user_id"]
+            foreignKeyName: "registros_de_treino_treino_id_fkey"
+            columns: ["treino_id"]
             isOneToOne: false
-            referencedRelation: "users"
+            referencedRelation: "treinos"
             referencedColumns: ["id"]
           },
         ]
+      }
+      treinos: {
+        Row: {
+          created_at: string
+          goal: string | null
+          id: number
+          name: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          goal?: string | null
+          id?: number
+          name: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          goal?: string | null
+          id?: number
+          name?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      uso_analítico_diário: {
+        Row: {
+          chats: number
+          day: string
+          images: number
+          plan: Database["public"]["Enums"]["plan_type"] | null
+          recipes: number
+          user_id: string
+        }
+        Insert: {
+          chats?: number
+          day: string
+          images?: number
+          plan?: Database["public"]["Enums"]["plan_type"] | null
+          recipes?: number
+          user_id: string
+        }
+        Update: {
+          chats?: number
+          day?: string
+          images?: number
+          plan?: Database["public"]["Enums"]["plan_type"] | null
+          recipes?: number
+          user_id?: string
+        }
+        Relationships: []
+      }
+      uso_analítico_mensal: {
+        Row: {
+          chats: number
+          images: number
+          month: string
+          plan: Database["public"]["Enums"]["plan_type"]
+          recipes: number
+          users_count: number
+        }
+        Insert: {
+          chats: number
+          images: number
+          month: string
+          plan: Database["public"]["Enums"]["plan_type"]
+          recipes: number
+          users_count: number
+        }
+        Update: {
+          chats?: number
+          images?: number
+          month?: string
+          plan?: Database["public"]["Enums"]["plan_type"]
+          recipes?: number
+          users_count?: number
+        }
+        Relationships: []
+      }
+      uso_diário: {
+        Row: {
+          chats: number
+          day: string
+          images: number
+          recipes: number
+          user_id: string
+        }
+        Insert: {
+          chats?: number
+          day?: string
+          images?: number
+          recipes?: number
+          user_id: string
+        }
+        Update: {
+          chats?: number
+          day?: string
+          images?: number
+          recipes?: number
+          user_id?: string
+        }
+        Relationships: []
       }
     }
     Views: {
-      [_ in never]: never
+      mv_usage_mensal: {
+        Row: {
+          chats: number | null
+          images: number | null
+          month: string | null
+          plan: Database["public"]["Enums"]["plan_type"] | null
+          recipes: number | null
+          users_count: number | null
+        }
+        Relationships: []
+      }
+      v_receita_mensal: {
+        Row: {
+          brl_amount: number | null
+          eur_amount: number | null
+          month: string | null
+          orders: number | null
+        }
+        Relationships: []
+      }
+      v_usage_monthly: {
+        Row: {
+          chats: number | null
+          images: number | null
+          month: string | null
+          plan: Database["public"]["Enums"]["plan_type"] | null
+          recipes: number | null
+          users_count: number | null
+        }
+        Insert: {
+          chats?: number | null
+          images?: number | null
+          month?: string | null
+          plan?: Database["public"]["Enums"]["plan_type"] | null
+          recipes?: number | null
+          users_count?: number | null
+        }
+        Update: {
+          chats?: number | null
+          images?: number | null
+          month?: string | null
+          plan?: Database["public"]["Enums"]["plan_type"] | null
+          recipes?: number | null
+          users_count?: number | null
+        }
+        Relationships: []
+      }
     }
     Functions: {
-      fn_calculate_bmi: {
-        Args: { height_cm: number; weight_kg: number }
-        Returns: number
-      }
-      fn_check_limit: {
-        Args: { feature: string; u_id: string }
-        Returns: {
-          allowed: boolean
-          remaining: number
-        }[]
-      }
-      fn_duplicate_workout: {
-        Args: { p_new_week_day: number; p_workout_id: string }
+      algorithm_sign: {
+        Args: { algorithm: string; secret: string; signables: string }
         Returns: string
       }
-      fn_increment_limit: {
-        Args: { feature: string; inc?: number; u_id: string }
+      analytics_build_usage_month: {
+        Args: { p_month: string }
         Returns: undefined
       }
-      fn_plan_limits: {
-        Args: { u_id: string }
+      analytics_revenue_from_payments: {
+        Args: { p_day?: string }
+        Returns: undefined
+      }
+      analytics_snapshot_usage_day: {
+        Args: { p_day?: string }
+        Returns: undefined
+      }
+      consume_limit: {
+        Args: { p_resource: string; p_user: string }
+        Returns: boolean
+      }
+      ensure_daily_usage: {
+        Args: { p_user: string }
+        Returns: undefined
+      }
+      expire_due_subscriptions: {
+        Args: Record<PropertyKey, never>
+        Returns: number
+      }
+      fn_subscricao_ativa: {
+        Args: { p_user: string }
         Returns: {
-          meal_limit: number
-          msg_limit: number
+          data_fim: string
+          data_inicio: string
+          estado: string
+          plano: string
+          user_id: string
         }[]
       }
-      fn_plan_state: {
-        Args: { u_id: string }
-        Returns: string
+      get_plan_limits: {
+        Args: { p_user: string }
+        Returns: {
+          max_chats: number
+          max_images: number
+          max_recipes: number
+          plan: Database["public"]["Enums"]["plan_type"]
+        }[]
       }
-      fn_progress_upsert: {
+      log_webhook: {
+        Args: { p_event: string; p_payload: Json; p_source: string }
+        Returns: undefined
+      }
+      process_payment: {
         Args: {
-          p_add_calories?: number
-          p_bpm?: number
-          p_load_kg?: number
-          p_reps?: number
-          p_sets?: number
-          p_time_seconds?: number
-          p_ts: string
-          p_user_id: string
-          p_workout_added?: boolean
+          p_amount: number
+          p_currency?: string
+          p_order_id?: string
+          p_payload?: Json
+          p_period_days?: number
+          p_plan?: Database["public"]["Enums"]["plan_type"]
+          p_platform?: string
+          p_user: string
         }
         Returns: undefined
       }
-      fn_progress_weekly: {
-        Args: { u_id: string }
+      process_refund: {
+        Args: {
+          p_amount: number
+          p_currency?: string
+          p_order_id?: string
+          p_payload?: Json
+          p_platform?: string
+          p_user: string
+        }
+        Returns: undefined
+      }
+      reactivate_free_for_inactive: {
+        Args: Record<PropertyKey, never>
+        Returns: number
+      }
+      rpc_consume_limit: {
+        Args: { p_resource: string }
+        Returns: boolean
+      }
+      rpc_get_access_state: {
+        Args: Record<PropertyKey, never>
         Returns: {
-          from_date: string
-          to_date: string
-          total_calories: number
-          total_reps: number
-          total_sets: number
-          total_time_seconds: number
-          workouts_count: number
+          chats_today: number
+          ends_at: string
+          images_today: number
+          max_chats: number
+          max_images: number
+          max_recipes: number
+          plan: Database["public"]["Enums"]["plan_type"]
+          recipes_today: number
+          starts_at: string
+          status: Database["public"]["Enums"]["subscription_status"]
         }[]
       }
-      fn_reset_limits: {
+      rpc_get_plan_limits: {
         Args: Record<PropertyKey, never>
+        Returns: {
+          max_chats: number
+          max_images: number
+          max_recipes: number
+          plan: Database["public"]["Enums"]["plan_type"]
+        }[]
+      }
+      rpc_process_payment: {
+        Args: {
+          p_amount: number
+          p_currency?: string
+          p_order_id?: string
+          p_payload?: Json
+          p_period_days?: number
+          p_plan?: Database["public"]["Enums"]["plan_type"]
+          p_platform?: string
+          p_user: string
+        }
         Returns: undefined
       }
-      fn_user_bmi: {
-        Args: { u_id: string }
-        Returns: number
-      }
-      gtrgm_compress: {
-        Args: { "": unknown }
-        Returns: unknown
-      }
-      gtrgm_decompress: {
-        Args: { "": unknown }
-        Returns: unknown
-      }
-      gtrgm_in: {
-        Args: { "": unknown }
-        Returns: unknown
-      }
-      gtrgm_options: {
-        Args: { "": unknown }
+      rpc_process_refund: {
+        Args: {
+          p_amount: number
+          p_currency?: string
+          p_order_id?: string
+          p_payload?: Json
+          p_platform?: string
+          p_user: string
+        }
         Returns: undefined
       }
-      gtrgm_out: {
-        Args: { "": unknown }
-        Returns: unknown
+      sign: {
+        Args: { algorithm?: string; payload: Json; secret: string }
+        Returns: string
       }
-      set_limit: {
-        Args: { "": number }
+      try_cast_double: {
+        Args: { inp: string }
         Returns: number
       }
-      show_limit: {
-        Args: Record<PropertyKey, never>
-        Returns: number
+      url_decode: {
+        Args: { data: string }
+        Returns: string
       }
-      show_trgm: {
-        Args: { "": string }
-        Returns: string[]
+      url_encode: {
+        Args: { data: string }
+        Returns: string
+      }
+      verify: {
+        Args: { algorithm?: string; secret: string; token: string }
+        Returns: {
+          header: Json
+          payload: Json
+          valid: boolean
+        }[]
       }
     }
     Enums: {
-      activity_level:
-        | "sedentario"
-        | "ligeiro"
-        | "moderado"
-        | "intenso"
-        | "atleta"
-      event_source: "web" | "mobile" | "webhook_shopify" | "cron" | "system"
-      gender: "masculino" | "feminino" | "outro" | "nao_declara"
-      subscription_status:
-        | "incomplete"
-        | "trialing"
-        | "active"
-        | "past_due"
-        | "canceled"
-        | "unpaid"
+      estado_subscricao: "pending" | "active" | "cancelled" | "expired"
+      plan_type: "free" | "premium"
+      subscription_status: "pending" | "active" | "cancelled" | "expired"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -603,23 +854,9 @@ export type CompositeTypes<
 export const Constants = {
   public: {
     Enums: {
-      activity_level: [
-        "sedentario",
-        "ligeiro",
-        "moderado",
-        "intenso",
-        "atleta",
-      ],
-      event_source: ["web", "mobile", "webhook_shopify", "cron", "system"],
-      gender: ["masculino", "feminino", "outro", "nao_declara"],
-      subscription_status: [
-        "incomplete",
-        "trialing",
-        "active",
-        "past_due",
-        "canceled",
-        "unpaid",
-      ],
+      estado_subscricao: ["pending", "active", "cancelled", "expired"],
+      plan_type: ["free", "premium"],
+      subscription_status: ["pending", "active", "cancelled", "expired"],
     },
   },
 } as const
