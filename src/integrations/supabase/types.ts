@@ -16,36 +16,27 @@ export type Database = {
     Tables: {
       events_log: {
         Row: {
-          error_message: string | null
-          event_type: string
-          http_status: number | null
+          event_type: string | null
           id: string
-          occurred_at: string
+          occurred_at: string | null
           payload: Json | null
-          signature_valid: boolean | null
-          source: Database["public"]["Enums"]["event_source"]
+          source: string | null
           user_id: string | null
         }
         Insert: {
-          error_message?: string | null
-          event_type: string
-          http_status?: number | null
+          event_type?: string | null
           id?: string
-          occurred_at?: string
+          occurred_at?: string | null
           payload?: Json | null
-          signature_valid?: boolean | null
-          source: Database["public"]["Enums"]["event_source"]
+          source?: string | null
           user_id?: string | null
         }
         Update: {
-          error_message?: string | null
-          event_type?: string
-          http_status?: number | null
+          event_type?: string | null
           id?: string
-          occurred_at?: string
+          occurred_at?: string | null
           payload?: Json | null
-          signature_valid?: boolean | null
-          source?: Database["public"]["Enums"]["event_source"]
+          source?: string | null
           user_id?: string | null
         }
         Relationships: [
@@ -55,64 +46,36 @@ export type Database = {
             isOneToOne: false
             referencedRelation: "users"
             referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "events_log_user_id_fkey"
-            columns: ["user_id"]
-            isOneToOne: false
-            referencedRelation: "v_user_overview"
-            referencedColumns: ["user_id"]
           },
         ]
       }
       meal_images: {
         Row: {
-          ai_model: string | null
-          analyzed_at: string | null
           calories_estimated: number | null
-          captured_at: string | null
-          confidence: number | null
-          created_at: string
+          created_at: string | null
           id: string
-          image_url: string
+          image_url: string | null
           ingredients: Json | null
-          notes: string | null
           nutrients: Json | null
-          suggestions: Json | null
-          updated_at: string
-          user_id: string
+          user_id: string | null
         }
         Insert: {
-          ai_model?: string | null
-          analyzed_at?: string | null
           calories_estimated?: number | null
-          captured_at?: string | null
-          confidence?: number | null
-          created_at?: string
+          created_at?: string | null
           id?: string
-          image_url: string
+          image_url?: string | null
           ingredients?: Json | null
-          notes?: string | null
           nutrients?: Json | null
-          suggestions?: Json | null
-          updated_at?: string
-          user_id: string
+          user_id?: string | null
         }
         Update: {
-          ai_model?: string | null
-          analyzed_at?: string | null
           calories_estimated?: number | null
-          captured_at?: string | null
-          confidence?: number | null
-          created_at?: string
+          created_at?: string | null
           id?: string
-          image_url?: string
+          image_url?: string | null
           ingredients?: Json | null
-          notes?: string | null
           nutrients?: Json | null
-          suggestions?: Json | null
-          updated_at?: string
-          user_id?: string
+          user_id?: string | null
         }
         Relationships: [
           {
@@ -121,46 +84,39 @@ export type Database = {
             isOneToOne: false
             referencedRelation: "users"
             referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "meal_images_user_id_fkey"
-            columns: ["user_id"]
-            isOneToOne: false
-            referencedRelation: "v_user_overview"
-            referencedColumns: ["user_id"]
           },
         ]
       }
       notifications_queue: {
         Row: {
-          created_at: string
+          created_at: string | null
           id: string
           payload: Json | null
           scheduled_at: string | null
-          status: string
-          tries: number
-          type: string
-          user_id: string
+          status: string | null
+          tries: number | null
+          type: string | null
+          user_id: string | null
         }
         Insert: {
-          created_at?: string
+          created_at?: string | null
           id?: string
           payload?: Json | null
           scheduled_at?: string | null
-          status?: string
-          tries?: number
-          type: string
-          user_id: string
+          status?: string | null
+          tries?: number | null
+          type?: string | null
+          user_id?: string | null
         }
         Update: {
-          created_at?: string
+          created_at?: string | null
           id?: string
           payload?: Json | null
           scheduled_at?: string | null
-          status?: string
-          tries?: number
-          type?: string
-          user_id?: string
+          status?: string | null
+          tries?: number | null
+          type?: string | null
+          user_id?: string | null
         }
         Relationships: [
           {
@@ -169,64 +125,36 @@ export type Database = {
             isOneToOne: false
             referencedRelation: "users"
             referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "notifications_queue_user_id_fkey"
-            columns: ["user_id"]
-            isOneToOne: false
-            referencedRelation: "v_user_overview"
-            referencedColumns: ["user_id"]
           },
         ]
       }
       progress_monthly: {
         Row: {
-          avg_bpm: number | null
-          avg_load_kg: number | null
-          bmi_avg: number | null
+          created_at: string | null
           id: string
-          month: number
+          month: number | null
           total_calories: number | null
-          total_reps: number | null
-          total_sets: number | null
-          total_time_seconds: number | null
-          updated_at: string
-          user_id: string
-          weight_kg_avg: number | null
+          user_id: string | null
           workouts_count: number | null
-          year: number
+          year: number | null
         }
         Insert: {
-          avg_bpm?: number | null
-          avg_load_kg?: number | null
-          bmi_avg?: number | null
+          created_at?: string | null
           id?: string
-          month: number
+          month?: number | null
           total_calories?: number | null
-          total_reps?: number | null
-          total_sets?: number | null
-          total_time_seconds?: number | null
-          updated_at?: string
-          user_id: string
-          weight_kg_avg?: number | null
+          user_id?: string | null
           workouts_count?: number | null
-          year: number
+          year?: number | null
         }
         Update: {
-          avg_bpm?: number | null
-          avg_load_kg?: number | null
-          bmi_avg?: number | null
+          created_at?: string | null
           id?: string
-          month?: number
+          month?: number | null
           total_calories?: number | null
-          total_reps?: number | null
-          total_sets?: number | null
-          total_time_seconds?: number | null
-          updated_at?: string
-          user_id?: string
-          weight_kg_avg?: number | null
+          user_id?: string | null
           workouts_count?: number | null
-          year?: number
+          year?: number | null
         }
         Relationships: [
           {
@@ -235,73 +163,33 @@ export type Database = {
             isOneToOne: false
             referencedRelation: "users"
             referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "progress_monthly_user_id_fkey"
-            columns: ["user_id"]
-            isOneToOne: false
-            referencedRelation: "v_user_overview"
-            referencedColumns: ["user_id"]
           },
         ]
       }
       subscriptions: {
         Row: {
-          cancel_at_end: boolean | null
-          canceled_at: string | null
-          created_at: string
-          currency: string | null
-          current_period_end: string | null
-          current_period_start: string | null
+          created_at: string | null
           id: string
-          plan_name: string
-          price_eur: number
-          raw_payload: Json | null
-          shopify_customer_id: string | null
-          shopify_subscription_id: string | null
-          status: Database["public"]["Enums"]["subscription_status"]
-          trial_end_at: string | null
-          trial_start_at: string | null
-          updated_at: string
-          user_id: string
+          plan_name: string | null
+          price_eur: number | null
+          status: string | null
+          user_id: string | null
         }
         Insert: {
-          cancel_at_end?: boolean | null
-          canceled_at?: string | null
-          created_at?: string
-          currency?: string | null
-          current_period_end?: string | null
-          current_period_start?: string | null
+          created_at?: string | null
           id?: string
-          plan_name: string
-          price_eur?: number
-          raw_payload?: Json | null
-          shopify_customer_id?: string | null
-          shopify_subscription_id?: string | null
-          status?: Database["public"]["Enums"]["subscription_status"]
-          trial_end_at?: string | null
-          trial_start_at?: string | null
-          updated_at?: string
-          user_id: string
+          plan_name?: string | null
+          price_eur?: number | null
+          status?: string | null
+          user_id?: string | null
         }
         Update: {
-          cancel_at_end?: boolean | null
-          canceled_at?: string | null
-          created_at?: string
-          currency?: string | null
-          current_period_end?: string | null
-          current_period_start?: string | null
+          created_at?: string | null
           id?: string
-          plan_name?: string
-          price_eur?: number
-          raw_payload?: Json | null
-          shopify_customer_id?: string | null
-          shopify_subscription_id?: string | null
-          status?: Database["public"]["Enums"]["subscription_status"]
-          trial_end_at?: string | null
-          trial_start_at?: string | null
-          updated_at?: string
-          user_id?: string
+          plan_name?: string | null
+          price_eur?: number | null
+          status?: string | null
+          user_id?: string | null
         }
         Relationships: [
           {
@@ -310,40 +198,33 @@ export type Database = {
             isOneToOne: false
             referencedRelation: "users"
             referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "subscriptions_user_id_fkey"
-            columns: ["user_id"]
-            isOneToOne: false
-            referencedRelation: "v_user_overview"
-            referencedColumns: ["user_id"]
           },
         ]
       }
       usage_limits: {
         Row: {
-          created_at: string
-          date: string
+          created_at: string | null
+          date: string | null
           id: string
           meal_count: number | null
           msg_count: number | null
-          user_id: string
+          user_id: string | null
         }
         Insert: {
-          created_at?: string
-          date: string
+          created_at?: string | null
+          date?: string | null
           id?: string
           meal_count?: number | null
           msg_count?: number | null
-          user_id: string
+          user_id?: string | null
         }
         Update: {
-          created_at?: string
-          date?: string
+          created_at?: string | null
+          date?: string | null
           id?: string
           meal_count?: number | null
           msg_count?: number | null
-          user_id?: string
+          user_id?: string | null
         }
         Relationships: [
           {
@@ -352,190 +233,81 @@ export type Database = {
             isOneToOne: false
             referencedRelation: "users"
             referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "usage_limits_user_id_fkey"
-            columns: ["user_id"]
-            isOneToOne: false
-            referencedRelation: "v_user_overview"
-            referencedColumns: ["user_id"]
           },
         ]
       }
       users: {
         Row: {
-          alergias: string[] | null
           altura_cm: number | null
-          consent_marketing: boolean | null
-          consent_privacy: boolean | null
-          consent_terms: boolean | null
-          created_at: string
-          data_nascimento: string | null
+          created_at: string | null
           email: string | null
-          foto_url: string | null
           id: string
-          ingestao_calorica_alvo: number | null
-          lingua: string | null
-          nivel_atividade: Database["public"]["Enums"]["activity_level"] | null
           nome: string | null
           objetivo: string | null
           peso_kg: number | null
           plano_atual: string | null
-          preferencias: string[] | null
-          sexo: Database["public"]["Enums"]["gender"] | null
-          subscription_status:
-            | Database["public"]["Enums"]["subscription_status"]
-            | null
+          sexo: string | null
+          subscription_status: string | null
           trial_end_at: string | null
-          updated_at: string
         }
         Insert: {
-          alergias?: string[] | null
           altura_cm?: number | null
-          consent_marketing?: boolean | null
-          consent_privacy?: boolean | null
-          consent_terms?: boolean | null
-          created_at?: string
-          data_nascimento?: string | null
+          created_at?: string | null
           email?: string | null
-          foto_url?: string | null
-          id: string
-          ingestao_calorica_alvo?: number | null
-          lingua?: string | null
-          nivel_atividade?: Database["public"]["Enums"]["activity_level"] | null
+          id?: string
           nome?: string | null
           objetivo?: string | null
           peso_kg?: number | null
           plano_atual?: string | null
-          preferencias?: string[] | null
-          sexo?: Database["public"]["Enums"]["gender"] | null
-          subscription_status?:
-            | Database["public"]["Enums"]["subscription_status"]
-            | null
+          sexo?: string | null
+          subscription_status?: string | null
           trial_end_at?: string | null
-          updated_at?: string
         }
         Update: {
-          alergias?: string[] | null
           altura_cm?: number | null
-          consent_marketing?: boolean | null
-          consent_privacy?: boolean | null
-          consent_terms?: boolean | null
-          created_at?: string
-          data_nascimento?: string | null
+          created_at?: string | null
           email?: string | null
-          foto_url?: string | null
           id?: string
-          ingestao_calorica_alvo?: number | null
-          lingua?: string | null
-          nivel_atividade?: Database["public"]["Enums"]["activity_level"] | null
           nome?: string | null
           objetivo?: string | null
           peso_kg?: number | null
           plano_atual?: string | null
-          preferencias?: string[] | null
-          sexo?: Database["public"]["Enums"]["gender"] | null
-          subscription_status?:
-            | Database["public"]["Enums"]["subscription_status"]
-            | null
+          sexo?: string | null
+          subscription_status?: string | null
           trial_end_at?: string | null
-          updated_at?: string
         }
         Relationships: []
       }
-      weights_log: {
-        Row: {
-          altura_cm: number | null
-          data_registo: string
-          id: string
-          peso_kg: number | null
-          user_id: string
-        }
-        Insert: {
-          altura_cm?: number | null
-          data_registo?: string
-          id?: string
-          peso_kg?: number | null
-          user_id: string
-        }
-        Update: {
-          altura_cm?: number | null
-          data_registo?: string
-          id?: string
-          peso_kg?: number | null
-          user_id?: string
-        }
-        Relationships: [
-          {
-            foreignKeyName: "weights_log_user_id_fkey"
-            columns: ["user_id"]
-            isOneToOne: false
-            referencedRelation: "users"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "weights_log_user_id_fkey"
-            columns: ["user_id"]
-            isOneToOne: false
-            referencedRelation: "v_user_overview"
-            referencedColumns: ["user_id"]
-          },
-        ]
-      }
       workout_exercises: {
         Row: {
-          bpm: number | null
-          created_at: string
-          exercise_name: string
+          created_at: string | null
+          exercise_name: string | null
           id: string
-          load_kg: number | null
-          notes: string | null
-          order_index: number | null
-          performed_at: string | null
           reps: number | null
-          rest_seconds: number | null
-          rpe: number | null
           sets: number | null
           time_seconds: number | null
-          updated_at: string
-          user_id: string
-          workout_id: string
+          user_id: string | null
+          workout_id: string | null
         }
         Insert: {
-          bpm?: number | null
-          created_at?: string
-          exercise_name: string
+          created_at?: string | null
+          exercise_name?: string | null
           id?: string
-          load_kg?: number | null
-          notes?: string | null
-          order_index?: number | null
-          performed_at?: string | null
           reps?: number | null
-          rest_seconds?: number | null
-          rpe?: number | null
           sets?: number | null
           time_seconds?: number | null
-          updated_at?: string
-          user_id: string
-          workout_id: string
+          user_id?: string | null
+          workout_id?: string | null
         }
         Update: {
-          bpm?: number | null
-          created_at?: string
-          exercise_name?: string
+          created_at?: string | null
+          exercise_name?: string | null
           id?: string
-          load_kg?: number | null
-          notes?: string | null
-          order_index?: number | null
-          performed_at?: string | null
           reps?: number | null
-          rest_seconds?: number | null
-          rpe?: number | null
           sets?: number | null
           time_seconds?: number | null
-          updated_at?: string
-          user_id?: string
-          workout_id?: string
+          user_id?: string | null
+          workout_id?: string | null
         }
         Relationships: [
           {
@@ -544,13 +316,6 @@ export type Database = {
             isOneToOne: false
             referencedRelation: "users"
             referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "workout_exercises_user_id_fkey"
-            columns: ["user_id"]
-            isOneToOne: false
-            referencedRelation: "v_user_overview"
-            referencedColumns: ["user_id"]
           },
           {
             foreignKeyName: "workout_exercises_workout_id_fkey"
@@ -563,30 +328,24 @@ export type Database = {
       }
       workouts: {
         Row: {
-          created_at: string
+          created_at: string | null
           id: string
-          notes: string | null
-          title: string
-          updated_at: string
-          user_id: string
+          title: string | null
+          user_id: string | null
           week_day: number | null
         }
         Insert: {
-          created_at?: string
+          created_at?: string | null
           id?: string
-          notes?: string | null
-          title: string
-          updated_at?: string
-          user_id: string
+          title?: string | null
+          user_id?: string | null
           week_day?: number | null
         }
         Update: {
-          created_at?: string
+          created_at?: string | null
           id?: string
-          notes?: string | null
-          title?: string
-          updated_at?: string
-          user_id?: string
+          title?: string | null
+          user_id?: string | null
           week_day?: number | null
         }
         Relationships: [
@@ -597,37 +356,11 @@ export type Database = {
             referencedRelation: "users"
             referencedColumns: ["id"]
           },
-          {
-            foreignKeyName: "workouts_user_id_fkey"
-            columns: ["user_id"]
-            isOneToOne: false
-            referencedRelation: "v_user_overview"
-            referencedColumns: ["user_id"]
-          },
         ]
       }
     }
     Views: {
-      v_user_overview: {
-        Row: {
-          altura_cm: number | null
-          bmi: number | null
-          email: string | null
-          month: number | null
-          nome: string | null
-          peso_kg: number | null
-          subscription_status:
-            | Database["public"]["Enums"]["subscription_status"]
-            | null
-          total_calories: number | null
-          total_time_seconds: number | null
-          trial_end_at: string | null
-          user_id: string | null
-          workouts_count: number | null
-          year: number | null
-        }
-        Relationships: []
-      }
+      [_ in never]: never
     }
     Functions: {
       fn_calculate_bmi: {
