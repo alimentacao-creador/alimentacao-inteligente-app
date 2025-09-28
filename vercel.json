@@ -1,0 +1,16 @@
+{
+  "crons": [
+    {
+      "path": "/api/cron/reset-limits",
+      "schedule": "5 0 * * *"
+    },
+    {
+      "path": "/api/cron/monthly-report",
+      "schedule": "0 5 1 * *"
+    },
+    {
+      "path": "/api/cron/cleanup",
+      "schedule": "0 3 * * 0"
+    }
+  ]
+}
