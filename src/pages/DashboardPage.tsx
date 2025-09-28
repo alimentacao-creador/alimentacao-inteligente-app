@@ -219,7 +219,11 @@ const DashboardPage = () => {
               className={`border-border/50 shadow-soft transition-smooth hover:shadow-elevated cursor-pointer ${
                 action.disabled ? 'opacity-50' : 'hover:border-primary/20'
               }`}
-              onClick={() => !action.disabled && window.location.href = action.path}
+              onClick={() => {
+                if (!action.disabled) {
+                  window.location.href = action.path;
+                }
+              }}
             >
               <CardContent className="p-6">
                 <div className="flex items-start gap-4">
