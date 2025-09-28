@@ -54,7 +54,7 @@ export type Database = {
           calories_estimated: number | null
           created_at: string | null
           id: string
-          image_url: string | null
+          image_url: string
           ingredients: Json | null
           nutrients: Json | null
           user_id: string | null
@@ -63,7 +63,7 @@ export type Database = {
           calories_estimated?: number | null
           created_at?: string | null
           id?: string
-          image_url?: string | null
+          image_url: string
           ingredients?: Json | null
           nutrients?: Json | null
           user_id?: string | null
@@ -72,7 +72,7 @@ export type Database = {
           calories_estimated?: number | null
           created_at?: string | null
           id?: string
-          image_url?: string | null
+          image_url?: string
           ingredients?: Json | null
           nutrients?: Json | null
           user_id?: string | null
@@ -95,7 +95,7 @@ export type Database = {
           scheduled_at: string | null
           status: string | null
           tries: number | null
-          type: string | null
+          type: string
           user_id: string | null
         }
         Insert: {
@@ -105,7 +105,7 @@ export type Database = {
           scheduled_at?: string | null
           status?: string | null
           tries?: number | null
-          type?: string | null
+          type: string
           user_id?: string | null
         }
         Update: {
@@ -115,7 +115,7 @@ export type Database = {
           scheduled_at?: string | null
           status?: string | null
           tries?: number | null
-          type?: string | null
+          type?: string
           user_id?: string | null
         }
         Relationships: [
@@ -132,29 +132,29 @@ export type Database = {
         Row: {
           created_at: string | null
           id: string
-          month: number | null
+          month: number
           total_calories: number | null
           user_id: string | null
           workouts_count: number | null
-          year: number | null
+          year: number
         }
         Insert: {
           created_at?: string | null
           id?: string
-          month?: number | null
+          month: number
           total_calories?: number | null
           user_id?: string | null
           workouts_count?: number | null
-          year?: number | null
+          year: number
         }
         Update: {
           created_at?: string | null
           id?: string
-          month?: number | null
+          month?: number
           total_calories?: number | null
           user_id?: string | null
           workouts_count?: number | null
-          year?: number | null
+          year?: number
         }
         Relationships: [
           {
@@ -170,25 +170,25 @@ export type Database = {
         Row: {
           created_at: string | null
           id: string
-          plan_name: string | null
-          price_eur: number | null
-          status: string | null
+          plan_name: string
+          price_eur: number
+          status: string
           user_id: string | null
         }
         Insert: {
           created_at?: string | null
           id?: string
-          plan_name?: string | null
-          price_eur?: number | null
-          status?: string | null
+          plan_name: string
+          price_eur: number
+          status: string
           user_id?: string | null
         }
         Update: {
           created_at?: string | null
           id?: string
-          plan_name?: string | null
-          price_eur?: number | null
-          status?: string | null
+          plan_name?: string
+          price_eur?: number
+          status?: string
           user_id?: string | null
         }
         Relationships: [
@@ -204,7 +204,7 @@ export type Database = {
       usage_limits: {
         Row: {
           created_at: string | null
-          date: string | null
+          date: string
           id: string
           meal_count: number | null
           msg_count: number | null
@@ -212,7 +212,7 @@ export type Database = {
         }
         Insert: {
           created_at?: string | null
-          date?: string | null
+          date: string
           id?: string
           meal_count?: number | null
           msg_count?: number | null
@@ -220,7 +220,7 @@ export type Database = {
         }
         Update: {
           created_at?: string | null
-          date?: string | null
+          date?: string
           id?: string
           meal_count?: number | null
           msg_count?: number | null
@@ -254,7 +254,7 @@ export type Database = {
           altura_cm?: number | null
           created_at?: string | null
           email?: string | null
-          id?: string
+          id: string
           nome?: string | null
           objetivo?: string | null
           peso_kg?: number | null
@@ -281,7 +281,7 @@ export type Database = {
       workout_exercises: {
         Row: {
           created_at: string | null
-          exercise_name: string | null
+          exercise_name: string
           id: string
           reps: number | null
           sets: number | null
@@ -291,7 +291,7 @@ export type Database = {
         }
         Insert: {
           created_at?: string | null
-          exercise_name?: string | null
+          exercise_name: string
           id?: string
           reps?: number | null
           sets?: number | null
@@ -301,7 +301,7 @@ export type Database = {
         }
         Update: {
           created_at?: string | null
-          exercise_name?: string | null
+          exercise_name?: string
           id?: string
           reps?: number | null
           sets?: number | null
@@ -330,21 +330,21 @@ export type Database = {
         Row: {
           created_at: string | null
           id: string
-          title: string | null
+          title: string
           user_id: string | null
           week_day: number | null
         }
         Insert: {
           created_at?: string | null
           id?: string
-          title?: string | null
+          title: string
           user_id?: string | null
           week_day?: number | null
         }
         Update: {
           created_at?: string | null
           id?: string
-          title?: string | null
+          title?: string
           user_id?: string | null
           week_day?: number | null
         }
@@ -423,30 +423,8 @@ export type Database = {
           user_id: string
         }[]
       }
-      get_plan_limits: {
-        Args: { p_user: string }
-        Returns: {
-          max_chats: number
-          max_images: number
-          max_recipes: number
-          plan: Database["public"]["Enums"]["plan_type"]
-        }[]
-      }
       log_webhook: {
         Args: { p_event: string; p_payload: Json; p_source: string }
-        Returns: undefined
-      }
-      process_payment: {
-        Args: {
-          p_amount: number
-          p_currency?: string
-          p_order_id?: string
-          p_payload?: Json
-          p_period_days?: number
-          p_plan?: Database["public"]["Enums"]["plan_type"]
-          p_platform?: string
-          p_user: string
-        }
         Returns: undefined
       }
       process_refund: {
@@ -467,43 +445,6 @@ export type Database = {
       rpc_consume_limit: {
         Args: { p_resource: string }
         Returns: boolean
-      }
-      rpc_get_access_state: {
-        Args: Record<PropertyKey, never>
-        Returns: {
-          chats_today: number
-          ends_at: string
-          images_today: number
-          max_chats: number
-          max_images: number
-          max_recipes: number
-          plan: Database["public"]["Enums"]["plan_type"]
-          recipes_today: number
-          starts_at: string
-          status: Database["public"]["Enums"]["subscription_status"]
-        }[]
-      }
-      rpc_get_plan_limits: {
-        Args: Record<PropertyKey, never>
-        Returns: {
-          max_chats: number
-          max_images: number
-          max_recipes: number
-          plan: Database["public"]["Enums"]["plan_type"]
-        }[]
-      }
-      rpc_process_payment: {
-        Args: {
-          p_amount: number
-          p_currency?: string
-          p_order_id?: string
-          p_payload?: Json
-          p_period_days?: number
-          p_plan?: Database["public"]["Enums"]["plan_type"]
-          p_platform?: string
-          p_user: string
-        }
-        Returns: undefined
       }
       rpc_process_refund: {
         Args: {
@@ -544,7 +485,7 @@ export type Database = {
     Enums: {
       estado_subscricao: "pending" | "active" | "cancelled" | "expired"
       plan_type: "free" | "premium"
-      subscription_status: "pending" | "active" | "cancelled" | "expired"
+      subscription_status: "active" | "expired" | "cancelled"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -674,7 +615,7 @@ export const Constants = {
     Enums: {
       estado_subscricao: ["pending", "active", "cancelled", "expired"],
       plan_type: ["free", "premium"],
-      subscription_status: ["pending", "active", "cancelled", "expired"],
+      subscription_status: ["active", "expired", "cancelled"],
     },
   },
 } as const
