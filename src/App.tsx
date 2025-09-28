@@ -4,8 +4,6 @@ import LandingPage from '@/pages/LandingPage';
 import AuthPage from '@/pages/AuthPage';
 
 function App() {
-  console.log('App component rendering...');
-  
   return (
     <Router>
       <Routes>
