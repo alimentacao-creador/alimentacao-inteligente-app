@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import LandingPage from '@/pages/LandingPage';
 import AuthPage from '@/pages/AuthPage';
 
 function App() {
@@ -7,12 +8,11 @@ function App() {
   
   return (
     <Router>
-      <div className="min-h-screen bg-gray-50">
-        <Routes>
-          <Route path="/" element={<AuthPage />} />
-          <Route path="*" element={<AuthPage />} />
-        </Routes>
-      </div>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/auth" element={<AuthPage />} />
+        <Route path="*" element={<LandingPage />} />
+      </Routes>
     </Router>
   );
 }
